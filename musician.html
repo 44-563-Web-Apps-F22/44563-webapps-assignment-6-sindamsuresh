@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Learning JavaScript</title>
+</head>
+
+<body>
+    <h2>Musician guess by Suresh</h2>
+    <form>
+        <label>Enter the secret musician name</label>
+        <input type="password" id="musician_name" value="John Lennon"> <br>
+
+        <label>Guess the musician</label>
+        <input type="text" id="guss_mus_name"> <br>
+
+        <input type="button" onclick="checkGuess()" value="Check the guess">
+    </form>
+    <p id="result">This text will be replaced</p>
+    <script>
+        let correct = 0
+        let wrong = 0
+        function checkGuess() {
+            musiName = document.getElementById("musician_name").value
+            gussName = document.getElementById("guss_mus_name").value
+            out = document.getElementById("result")
+            if (musiName == gussName) {
+                correct++
+                alert("You got it right");
+                out.innerHTML = correct
+            } else {
+                wrong++
+                alert("Wrong Musician");
+                out.innerHTML = wrong
+            }
+        }
+
+    </script>
+</body>
+
+</html>
