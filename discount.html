@@ -4,42 +4,68 @@
 <head>
     <title>Learning JavaScript</title>
 </head>
- 
+
 <body>
 
-<h2>Suresh Sindam computes discounts</h2>
+    <h2>Suresh Sindam computes discounts</h2>
 
-<form>
-    <label for="proAmount">Enter base amount</label>
-    <input type ="number" id="proAmount"  value=20> <br>
+    <form>
+        <label for="proAmount">Enter base amount</label>
+        <input type="number" id="proAmount" value=20> <br>
 
-    <label for="disAmount">Enter the discount percentage</label>
-    <input type ="number" id="disAmount" autofocus value=10> <br>
+        <label for="disAmount">Enter the discount percentage</label>
+        <input type="number" id="disAmount" autofocus value=10> <br>
 
-    <input type="button" onclick="discount()" value="Apply discount">
-</form>
+        <input type="button" onclick="discount()" value="Apply discount">
+    </form>
 
 
-<p id="result">This text will be replaced </p>
+    <p id="result">This text will be replaced </p>
 
-<script> 
+    <form>
+        <input type="radio" id="radio1" onclick="chooseOp()" name="color" value="times" checked>
+        <label for="radio1">*</label></br>
 
-function discount() {
-    console.log("calling discount method")
-    amountValue = document.getElementById("proAmount").value
-    discountValue = document.getElementById("disAmount").value
-    let result = ""
-    let z = 1
-    while(z < 6) {
-        result += i * (amountValue - (amountValue * discountValue/100)) + " "
-        console.log(result)
-        z++
-    }
-    
-    document.getElementById("result").outerHTML = result
-    
-}
-</script>
+        <input type="radio" id="radio2" onclick="chooseOp()" name="color" value="divide">
+        <label for="radio2">/</label></br>
+
+        <input type="radio" id="radio3" onclick="chooseOp()" name="color" value="exponent">
+        <label for="radio3">**</label></br>
+
+    </form>
+
+    <p id="result1">This text will be replaced</p>
+
+    <script>
+        function discount() {
+            console.log("calling discount method")
+            amountValue = document.getElementById("proAmount").value
+            discountValue = document.getElementById("disAmount").value
+            let result = ""
+            let z = 1
+            while (z < 6) {
+                result += z * (amountValue - (amountValue * discountValue / 100)) + " "
+                console.log(result)
+                z++
+            }
+            document.getElementById("result").innerHTML = result
+        }
+        function chooseOp() {
+            amountValue = document.getElementById("proAmount").value
+            discountValue = document.getElementById("disAmount").value
+            let result = ""
+
+            if(document.getElementById("radio1").checked) {
+                result = amountValue * discountValue
+            } else if(document.getElementById("radio2").checked) {
+                result = amountValue / discountValue
+            } else if(document.getElementById("radio3").checked) {
+                result = amountValue ** discountValue
+            }
+            document.getElementById("result1").innerHTML = result
+        }
+    </script>
 
 </body>
-</html> 
+
+</html>
