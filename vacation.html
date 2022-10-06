@@ -25,6 +25,14 @@
 
     <p id="result">This text will be replaced </p>
 
+    <form>
+        <input type="text" id="city" value=city>
+        <label for="Name">Enter a city</label></br>
+        <input type="text" id="price">
+        <label for="price">Enter price</label></br>
+        <input type="button" onclick="updateVacation()" value="Update the vacation">
+    </form>
+
     <script>
         let my_vacation = {}
 
@@ -39,6 +47,13 @@
 
             document.getElementById("result").innerHTML = JSON.stringify(my_vacation)
 
+        }
+
+        function updateVacation() {
+            cityName = document.getElementById("city").value
+            priceValue = document.getElementById("price").value
+            my_vacation[cityName] = priceValue
+            document.getElementById("result").innerHTML = JSON.stringify(my_vacation)
         }
     </script>
 
