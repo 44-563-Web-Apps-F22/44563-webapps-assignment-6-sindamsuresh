@@ -14,7 +14,7 @@
         <label>Guess the musician</label>
         <input type="text" id="guss_mus_name"> <br>
 
-        <input type="button" onclick="checkGuess()" value="Check the guess">
+        <input type="button" id="checkGussbtn" onclick="checkGuess()" value="Check the guess">
     </form>
     <p id="result">This text will be replaced</p>
     <script>
@@ -29,11 +29,26 @@
                 alert("You got it right");
                 out.innerHTML = correct
             } else {
-                wrong++
-                alert("Wrong Musician");
+                wrong += 1
+                
+                if (wrong <= 3) {
+                    alert("Wrong Musician");
+                    if (wrong == 3) {
+                        document.getElementById("checkGussbtn").onclick = function showGameOver() {
+                            alert("Sorry, game over.");
+                        }
+                    }
+                } else {
+                    document.getElementById("checkGussbtn").onclick = function showGameOver() {
+                        alert("Sorry, game over.");
+                    }
+                }
                 out.innerHTML = wrong
             }
         }
+
+
+
     </script>
     <div>
         <img id="imgs" src="dragonfly.jpg" onclick="swapImage()" width="100" height="100">
